@@ -49,6 +49,9 @@ RUN set -ex \
 	# 配置 log 文件地址,默认打印在命令行终端的窗口上，也可设为/dev/null屏蔽日志
 	# 测试： echo "logfile """ | sed -e 's/^\(logfile .*\)$/# \1/' ==># logfile
 	&& sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf \
+	# 关闭保护模式，所有主机都可以访问
+	# 测试：  echo "protected-mode yes" | sed -e 's/^\(protected-mode yes\)$/protected-mode no/' ==># protected-mode no
+	&& sed -i 's/^\(protected-mode yes\)$/protected-mode no/' /etc/redis/redis.conf \
 	\
 	&& rm -r ${REDIS_SRC_HOME} 
 

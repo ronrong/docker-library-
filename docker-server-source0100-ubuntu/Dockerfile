@@ -8,6 +8,7 @@ RUN set -ex \
 	&& buildDeps=' \
 		gcc \
 		wget \
+		vim \
 		libc6-dev \
 		make \
 		iputils-ping \
