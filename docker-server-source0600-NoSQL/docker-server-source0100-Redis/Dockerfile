@@ -41,7 +41,7 @@ RUN set -ex \
 	# 测试： echo "bind 127.0.0.1" | sed -e 's/^\(bind .*\)$/# \1/' ==># bind 127.0.0.1
 	&& sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf \
 	# 注释掉daemoniz。，默认情况下 redis 不是作为守护进程运行的，如果你想让它在后台运行，你就把它改成 yes
-	# 测试： echo "daemonize no" | sed -e 's/^\(daemonize .*\)$/# \1/' ==># bind daemonize no
+	# 测试： echo "daemonize no" | sed -e 's/^\(daemonize .*\)$/# \1/' ==># daemonize no
 	&& sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf \
 	# 数据库备份的文件放置的路径
 	# 测试： echo "dir ./" | sed -e 's/^\(dir .*\)$/# \1\ndir \/data/' ==># dir /data
