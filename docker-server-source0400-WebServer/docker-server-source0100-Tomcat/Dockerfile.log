@@ -1,0 +1,115 @@
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-Tomcat$ docker build -t ronrong/tomcat8-jdk8:0.02 .
+Sending build context to Docker daemon 6.656 kB
+Step 1/12 : FROM ronrong/ubuntu-java-jdk8_8.121.13:0.01
+ ---> 729de0a5536f
+Step 2/12 : MAINTAINER ronrong <shaolinrong@hotmail.com>
+ ---> Using cache
+ ---> 6177d078d48e
+Step 3/12 : ENV WEB_SERVER_HOME /data/webserver TOMCAT_MAJOR 8 TOMCAT_VERSION 8.0.39 CATALINA_HOME /data/webserver/tomcat
+ ---> Running in 7e08f1507a33
+ ---> f113fac341d0
+Removing intermediate container 7e08f1507a33
+Step 4/12 : ENV PATH $CATALINA_HOME/bin:$PATH
+ ---> Running in e3320c2e7f06
+ ---> 60c24ca1de8f
+Removing intermediate container e3320c2e7f06
+Step 5/12 : RUN mkdir -p $WEB_SERVER_HOME
+ ---> Running in 6a46c7042eb9
+ ---> 915d3ab92d52
+Removing intermediate container 6a46c7042eb9
+Step 6/12 : RUN curl -L -O http://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz     && gunzip apache-tomcat-$TOMCAT_VERSION.tar.gz     && tar -xf apache-tomcat-$TOMCAT_VERSION.tar -C $WEB_SERVER_HOME     && rm $WEB_SERVER_HOME/apache-tomcat-$TOMCAT_VERSION/bin/*.bat     && mv $WEB_SERVER_HOME/apache-tomcat-$TOMCAT_VERSION $CATALINA_HOME     && rm apache-tomcat-$TOMCAT_VERSION.tar
+ ---> Running in 49320ab40e8b
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9086k  100 9086k    0     0   106k      0  0:01:25  0:01:25 --:--:--  144k
+ ---> 1a3d1ea6b673
+Removing intermediate container 49320ab40e8b
+Step 7/12 : ADD tomcat-users.xml $CATALINA_HOME/conf/
+ ---> 4ce275cbcc64
+Removing intermediate container 8947681d4874
+Step 8/12 : VOLUME "$CATALINA_HOME/webapps"
+ ---> Running in 4d97651ac7c8
+ ---> c993be852311
+Removing intermediate container 4d97651ac7c8
+Step 9/12 : WORKDIR $CATALINA_HOME
+ ---> c58cfb832dbd
+Removing intermediate container f2712fdb9ebf
+Step 10/12 : EXPOSE 8080
+ ---> Running in 88ff69b065fd
+ ---> 0ed6ff54187a
+Removing intermediate container 88ff69b065fd
+Step 11/12 : EXPOSE 8009
+ ---> Running in fe4afe0b930f
+ ---> 3dff25dcd9b9
+Removing intermediate container fe4afe0b930f
+Step 12/12 : CMD catalina.sh run
+ ---> Running in 9e336b027513
+ ---> cf508bd72ba6
+Removing intermediate container 9e336b027513
+Successfully built cf508bd72ba6
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-Tomcat$ docker run --name tomcat8-002 -it -p 8080:8080 ronrong/tomcat8-jdk8:0.02
+docker: Error response from daemon: Conflict. The container name "/tomcat8-002" is already in use by container af14fc92d0b97112d694ae1dee9d193e5252cb1c6e65f572e5d6227738c4fc3a. You have to remove (or rename) that container to be able to reuse that name..
+See 'docker run --help'.
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-Tomcat$ docker rm tomcat8-002
+tomcat8-002
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-Tomcat$ docker run --name tomcat8-002 -it -p 8080:8080 ronrong/tomcat8-jdk8:0.02
+Using CATALINA_BASE:   /data/webserver/tomcat
+Using CATALINA_HOME:   /data/webserver/tomcat
+Using CATALINA_TMPDIR: /data/webserver/tomcat/temp
+Using JRE_HOME:        /opt/jdk
+Using CLASSPATH:       /data/webserver/tomcat/bin/bootstrap.jar:/data/webserver/tomcat/bin/tomcat-juli.jar
+18-Mar-2017 04:45:51.790 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.39
+18-Mar-2017 04:45:51.806 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Nov 9 2016 08:48:39 UTC
+18-Mar-2017 04:45:51.807 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.39.0
+18-Mar-2017 04:45:51.807 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+18-Mar-2017 04:45:51.808 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.4.47-boot2docker
+18-Mar-2017 04:45:51.808 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+18-Mar-2017 04:45:51.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/jdk1.8.0_121/jre
+18-Mar-2017 04:45:51.810 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_121-b13
+18-Mar-2017 04:45:51.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+18-Mar-2017 04:45:51.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /data/webserver/tomcat
+18-Mar-2017 04:45:51.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /data/webserver/tomcat
+18-Mar-2017 04:45:51.828 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/data/webserver/tomcat/conf/logging.properties
+18-Mar-2017 04:45:51.828 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+18-Mar-2017 04:45:51.829 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+18-Mar-2017 04:45:51.829 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+18-Mar-2017 04:45:51.829 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/data/webserver/tomcat/endorsed
+18-Mar-2017 04:45:51.830 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/data/webserver/tomcat
+18-Mar-2017 04:45:51.830 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/data/webserver/tomcat
+18-Mar-2017 04:45:51.831 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/data/webserver/tomcat/temp
+18-Mar-2017 04:45:51.838 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+18-Mar-2017 04:45:52.385 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+18-Mar-2017 04:45:52.436 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+18-Mar-2017 04:45:52.442 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+18-Mar-2017 04:45:52.463 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+18-Mar-2017 04:45:52.469 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1968 ms
+18-Mar-2017 04:45:52.577 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+18-Mar-2017 04:45:52.579 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.39
+18-Mar-2017 04:45:52.622 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /data/webserver/tomcat/webapps/ROOT
+18-Mar-2017 04:45:53.636 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /data/webserver/tomcat/webapps/ROOT has finished in 1,013 ms
+18-Mar-2017 04:45:53.643 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /data/webserver/tomcat/webapps/host-manager
+18-Mar-2017 04:45:53.766 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /data/webserver/tomcat/webapps/host-manager has finished in 123 ms
+18-Mar-2017 04:45:53.769 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /data/webserver/tomcat/webapps/docs
+18-Mar-2017 04:45:53.822 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /data/webserver/tomcat/webapps/docs has finished in 53 ms
+18-Mar-2017 04:45:53.831 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /data/webserver/tomcat/webapps/manager
+18-Mar-2017 04:45:53.938 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /data/webserver/tomcat/webapps/manager has finished in 107 ms
+18-Mar-2017 04:45:53.938 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /data/webserver/tomcat/webapps/examples
+18-Mar-2017 04:45:54.920 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /data/webserver/tomcat/webapps/examples has finished in 981 ms
+18-Mar-2017 04:45:54.936 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+18-Mar-2017 04:45:54.957 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+18-Mar-2017 04:45:54.963 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2493 ms
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-Tomcat$ curl http:localhost:8080
+curl: (6) Could not resolve host: http:localhost
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-Tomcat$ curl http//:localhost:8080
+curl: (6) Could not resolve host: http
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-Tomcat$ curl http://localhost:8080
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Apache Tomcat/8.0.39</title>
+        <link href="favicon.ico" rel="icon" type="image/x-icon" />
+        <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />

@@ -1,0 +1,94 @@
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0200-OS/docker-server-source0100-Ubuntu-Java$ docker build -t ronrong/ubuntu-java-jdk8_8.121.13:0.01 .
+Sending build context to Docker daemon 9.216 kB
+Step 1/6 : FROM ronrong/ubuntu:0.02
+ ---> 968f47bd3df8
+Step 2/6 : MAINTAINER ronrong <shaolinrong@hotmail.com>
+ ---> Running in b9c3c443ed73
+ ---> 0499b8751ef4
+Removing intermediate container b9c3c443ed73
+Step 3/6 : ENV JAVA_VERSION_MAJOR 8 JAVA_VERSION_MINOR 121 JAVA_VERSION_BUILD 13 JAVA_PACKAGE jdk JAVA_HOME /opt/jdk PATH ${PATH}:/opt/jdk/bin
+ ---> Running in 2fc1fb05f506
+ ---> ea60a13c4d53
+Removing intermediate container 2fc1fb05f506
+Step 4/6 : LABEL TYPE "JAVA"
+ ---> Running in c19066c3a5c6
+ ---> f0150880d826
+Removing intermediate container c19066c3a5c6
+Step 5/6 : RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie"     http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/e9e7ea248e2c4826b92b3f075a80e441/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz     && gunzip ${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz     && tar -xf ${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar -C /opt     && rm ${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar     && ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk     && rm -rf /opt/jdk/*src.zip            /opt/jdk/lib/missioncontrol            /opt/jdk/lib/visualvm            /opt/jdk/lib/*javafx*            /opt/jdk/jre/lib/plugin.jar            /opt/jdk/jre/bin/javaws            /opt/jdk/jre/lib/javaws.jar            /opt/jdk/jre/lib/desktop            /opt/jdk/jre/plugin            /opt/jdk/jre/lib/deploy*            /opt/jdk/jre/lib/*javafx*            /opt/jdk/jre/lib/*jfx*            /opt/jdk/jre/lib/amd64/libdecora_sse.so            /opt/jdk/jre/lib/amd64/libprism_*.so            /opt/jdk/jre/lib/amd64/libfxplugins.so            /opt/jdk/jre/lib/amd64/libglass.so            /opt/jdk/jre/lib/amd64/libgstreamer-lite.so            /opt/jdk/jre/lib/amd64/libjavafx*.so            /opt/jdk/jre/lib/amd64/libjfx*.so     && mkdir -p /opt/jdk/jre/lib/security     && curl -s -k -L -C - -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/${JAVA_VERSION_MAJOR}/jce_policy-${JAVA_VERSION_MAJOR}.zip > /tmp/jce_policy-${JAVA_VERSION_MAJOR}.zip     && apt-get update && apt-get install unzip     && unzip -d /tmp/ /tmp/jce_policy-${JAVA_VERSION_MAJOR}.zip     && yes |cp -v /tmp/UnlimitedJCEPolicyJDK${JAVA_VERSION_MAJOR}/*.jar /opt/jdk/jre/lib/security/     && rm -fr /tmp/*     && apt-get purge unzip     && apt-get clean autoclean     && apt-get autoremove --yes     && rm -rf /var/lib/{apt,dpkg,cache,log}/
+ ---> Running in 488ac2d5cd77
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   531  100   531    0     0    327      0  0:00:01  0:00:01 --:--:--   611
+100  174M  100  174M    0     0   120k      0  0:24:49  0:24:49 --:--:--  144k
+Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial/main Sources [1,103 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial/restricted Sources [5,179 B]
+Get:6 http://archive.ubuntu.com/ubuntu xenial/universe Sources [9,802 kB]
+Get:7 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1,558 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial/restricted amd64 Packages [14.1 kB]
+Get:9 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [9,827 kB]
+Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main Sources [298 kB]
+Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/restricted Sources [2,815 B]
+Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/universe Sources [180 kB]
+Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [632 kB]
+Get:14 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [12.4 kB]
+Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [556 kB]
+Get:16 http://archive.ubuntu.com/ubuntu xenial-security/main Sources [76.5 kB]
+Get:17 http://archive.ubuntu.com/ubuntu xenial-security/restricted Sources [2,392 B]
+Get:18 http://archive.ubuntu.com/ubuntu xenial-security/universe Sources [27.6 kB]
+Get:19 http://archive.ubuntu.com/ubuntu xenial-security/main amd64 Packages [289 kB]
+Get:20 http://archive.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [12.0 kB]
+Get:21 http://archive.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [117 kB]
+Fetched 25.0 MB in 8min 31s (48.8 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  zip
+The following NEW packages will be installed:
+  unzip
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 158 kB of archives.
+After this operation, 530 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 unzip amd64 6.0-20ubuntu1 [158 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 158 kB in 1s (124 kB/s)
+Selecting previously unselected package unzip.
+(Reading database ... 14733 files and directories currently installed.)
+Preparing to unpack .../unzip_6.0-20ubuntu1_amd64.deb ...
+Unpacking unzip (6.0-20ubuntu1) ...
+Processing triggers for mime-support (3.59ubuntu1) ...
+Setting up unzip (6.0-20ubuntu1) ...
+Archive:  /tmp/jce_policy-8.zip
+   creating: /tmp/UnlimitedJCEPolicyJDK8/
+  inflating: /tmp/UnlimitedJCEPolicyJDK8/local_policy.jar  
+  inflating: /tmp/UnlimitedJCEPolicyJDK8/README.txt  
+  inflating: /tmp/UnlimitedJCEPolicyJDK8/US_export_policy.jar  
+'/tmp/UnlimitedJCEPolicyJDK8/US_export_policy.jar' -> '/opt/jdk/jre/lib/security/US_export_policy.jar'
+'/tmp/UnlimitedJCEPolicyJDK8/local_policy.jar' -> '/opt/jdk/jre/lib/security/local_policy.jar'
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+  unzip*
+0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+After this operation, 530 kB disk space will be freed.
+(Reading database ... 14751 files and directories currently installed.)
+Removing unzip (6.0-20ubuntu1) ...
+Purging configuration files for unzip (6.0-20ubuntu1) ...
+Processing triggers for mime-support (3.59ubuntu1) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+ ---> 48942f3ff723
+Removing intermediate container 488ac2d5cd77
+Step 6/6 : RUN groupadd -g 499 java-app     && useradd -u 499 java-app -g java-app -s /bin/false -M -d /data/java-app     && mkdir -p /data/java-app/logs/archives && chown -R java-app:java-app /data/java-app
+ ---> Running in 32f4faee32e9
+ ---> 729de0a5536f
+Removing intermediate container 32f4faee32e9
+Successfully built 729de0a5536f
