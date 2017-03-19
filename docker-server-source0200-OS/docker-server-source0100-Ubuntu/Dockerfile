@@ -10,6 +10,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LANGUAGE=en_US.en \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
+# 更新软件源，速度快了100倍
+# COPY ./etc/apt/sources.list  /etc/apt/sources.list
 
 RUN echo 'APT::Install-Recommends "0"; \n\
           APT::Get::Assume-Yes "true"; \n\

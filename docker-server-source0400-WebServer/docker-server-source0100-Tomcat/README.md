@@ -14,7 +14,7 @@ $> sudo docker build -t ronrong/tomcat8-jdk8:0.02 .
 ### 0200. 运行容器
 
 ```
-$> sudo docker run -i -t --rm -p 8080:8080 ronrong/tomcat8-jdk8:0.02
+$> sudo docker run --name tomcat8-001 -i -t --rm -p 8080:8080 ronrong/tomcat8-jdk8:0.02
 ```
 或者挂载一个卷
 

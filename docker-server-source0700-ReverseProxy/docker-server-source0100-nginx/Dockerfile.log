@@ -1,0 +1,201 @@
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-nginx$ sudo docker build -t ronrong/nginx-1.10:0.01 . 
+Sending build context to Docker daemon 9.216 kB
+Step 1/11 : FROM ronrong/ubuntu:0.02
+ ---> 968f47bd3df8
+Step 2/11 : MAINTAINER ronrong <shaolinrong@hotmail.com>
+ ---> Using cache
+ ---> 0499b8751ef4
+Step 3/11 : ENV NGINX_VERSION 1.10.2
+ ---> Using cache
+ ---> 3e8452996ab1
+Step 4/11 : ENV NGINX_HOME /data/nginx
+ ---> Using cache
+ ---> 38199e0b87bc
+Step 5/11 : COPY ./etc/apt/sources.list /etc/apt/sources.list
+ ---> f9f4098e689c
+Removing intermediate container 135b9ef7b742
+Step 6/11 : RUN apt-key adv --fetch-keys http://nginx.org/keys/nginx_signing.key     && echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list.d/nginx.list     && apt-get update     && apt-get install nginx=${NGINX_VERSION}* supervisor logrotate     && apt-get clean autoclean     && apt-get autoremove --yes     && rm -rf /var/lib/{apt,dpkg,cache,log}/     && ln -sf /dev/stdout /var/log/nginx/access.log     && ln -sf /dev/stderr /var/log/nginx/error.log     && mkdir -p $NGINX_HOME/share/nginx/errors     && mkdir -p $NGINX_HOME/cache/nginx/temp     && echo "HTTP ERROR 40x" > $NGINX_HOME/share/nginx/errors/40x.html     && echo "HTTP ERROR 50x" > $NGINX_HOME/share/nginx/errors/50x.html     && sed -i "s|/usr/sbin/logrotate /etc/logrotate.conf|/usr/sbin/logrotate -f /etc/logrotate.conf|g" /etc/cron.daily/logrotate     && sed -i "s/daily/daily\n        dateext/g" /etc/logrotate.d/nginx     && apt-get clean autoclean     && apt-get autoremove --yes     && rm -rf /var/lib/{apt,dpkg,cache,log}/     && rm -fr /tmp/* /var/tmp/*
+ ---> Running in c357ed2ba7f5
+Executing: /tmp/tmp.HgXEEwQZMy/gpg.1.sh --fetch-keys
+http://nginx.org/keys/nginx_signing.key
+gpg: key 7BD9BF62: public key "nginx signing key <signing-key@nginx.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+Get:1 http://mirrors.aliyun.com/ubuntu xenial InRelease [247 kB]
+Get:2 http://mirrors.aliyun.com/ubuntu xenial-updates InRelease [102 kB]
+Get:3 http://mirrors.aliyun.com/ubuntu xenial-security InRelease [102 kB]
+Get:4 http://mirrors.aliyun.com/ubuntu xenial/main amd64 Packages [1,558 kB]
+Get:5 http://nginx.org/packages/ubuntu xenial InRelease [3,589 B]
+Get:6 http://mirrors.aliyun.com/ubuntu xenial/restricted amd64 Packages [14.1 kB]
+Get:7 http://mirrors.aliyun.com/ubuntu xenial/universe amd64 Packages [9,827 kB]
+Get:8 http://nginx.org/packages/ubuntu xenial/nginx amd64 Packages [7,012 B]
+Get:9 http://mirrors.aliyun.com/ubuntu xenial-updates/main amd64 Packages [632 kB]
+Get:10 http://mirrors.aliyun.com/ubuntu xenial-updates/restricted amd64 Packages [12.4 kB]
+Get:11 http://mirrors.aliyun.com/ubuntu xenial-updates/universe amd64 Packages [556 kB]
+Get:12 http://mirrors.aliyun.com/ubuntu xenial-security/main amd64 Packages [289 kB]
+Get:13 http://mirrors.aliyun.com/ubuntu xenial-security/restricted amd64 Packages [12.0 kB]
+Get:14 http://mirrors.aliyun.com/ubuntu xenial-security/universe amd64 Packages [117 kB]
+Fetched 13.5 MB in 12s (1,085 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  cron libpopt0 libpython-stdlib libpython2.7-minimal libpython2.7-stdlib
+  python python-meld3 python-minimal python-pkg-resources python2.7
+  python2.7-minimal
+Suggested packages:
+  anacron checksecurity exim4 | postfix | mail-transport-agent mailx
+  python-doc python-tk python-setuptools python2.7-doc binutils binfmt-support
+  supervisor-doc
+The following NEW packages will be installed:
+  cron libpopt0 libpython-stdlib libpython2.7-minimal libpython2.7-stdlib
+  logrotate nginx python python-meld3 python-minimal python-pkg-resources
+  python2.7 python2.7-minimal supervisor
+0 upgraded, 14 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5,153 kB of archives.
+After this operation, 21.6 MB of additional disk space will be used.
+Get:1 http://mirrors.aliyun.com/ubuntu xenial/main amd64 cron amd64 3.0pl1-128ubuntu2 [68.4 kB]
+Get:2 http://mirrors.aliyun.com/ubuntu xenial/main amd64 libpopt0 amd64 1.16-10 [26.0 kB]
+Get:3 http://mirrors.aliyun.com/ubuntu xenial-updates/main amd64 libpython2.7-minimal amd64 2.7.12-1ubuntu0~16.04.1 [339 kB]
+Get:4 http://mirrors.aliyun.com/ubuntu xenial-updates/main amd64 python2.7-minimal amd64 2.7.12-1ubuntu0~16.04.1 [1,295 kB]
+Get:5 http://mirrors.aliyun.com/ubuntu xenial/main amd64 python-minimal amd64 2.7.11-1 [28.2 kB]
+Get:6 http://mirrors.aliyun.com/ubuntu xenial-updates/main amd64 libpython2.7-stdlib amd64 2.7.12-1ubuntu0~16.04.1 [1,884 kB]
+Get:7 http://mirrors.aliyun.com/ubuntu xenial-updates/main amd64 python2.7 amd64 2.7.12-1ubuntu0~16.04.1 [224 kB]
+Get:8 http://mirrors.aliyun.com/ubuntu xenial/main amd64 libpython-stdlib amd64 2.7.11-1 [7,656 B]
+Get:9 http://mirrors.aliyun.com/ubuntu xenial/main amd64 python amd64 2.7.11-1 [137 kB]
+Get:10 http://mirrors.aliyun.com/ubuntu xenial/main amd64 logrotate amd64 3.8.7-2ubuntu2 [37.6 kB]
+Get:11 http://mirrors.aliyun.com/ubuntu xenial/main amd64 python-pkg-resources all 20.7.0-1 [108 kB]
+Get:12 http://mirrors.aliyun.com/ubuntu xenial/universe amd64 python-meld3 all 1.0.2-2 [30.9 kB]
+Get:13 http://mirrors.aliyun.com/ubuntu xenial/universe amd64 supervisor all 3.2.0-2 [252 kB]
+Get:14 http://nginx.org/packages/ubuntu xenial/nginx amd64 nginx amd64 1.10.2-1~xenial [715 kB]
+Get:14 http://nginx.org/packages/ubuntu xenial/nginx amd64 nginx amd64 1.10.2-1~xenial [715 kB]
+Get:14 http://nginx.org/packages/ubuntu xenial/nginx amd64 nginx amd64 1.10.2-1~xenial [715 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 4,960 kB in 5min 47s (14.3 kB/s)
+Selecting previously unselected package cron.
+(Reading database ... 14733 files and directories currently installed.)
+Preparing to unpack .../cron_3.0pl1-128ubuntu2_amd64.deb ...
+Unpacking cron (3.0pl1-128ubuntu2) ...
+Selecting previously unselected package libpopt0:amd64.
+Preparing to unpack .../libpopt0_1.16-10_amd64.deb ...
+Unpacking libpopt0:amd64 (1.16-10) ...
+Selecting previously unselected package libpython2.7-minimal:amd64.
+Preparing to unpack .../libpython2.7-minimal_2.7.12-1ubuntu0~16.04.1_amd64.deb ...
+Unpacking libpython2.7-minimal:amd64 (2.7.12-1ubuntu0~16.04.1) ...
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack .../python2.7-minimal_2.7.12-1ubuntu0~16.04.1_amd64.deb ...
+Unpacking python2.7-minimal (2.7.12-1ubuntu0~16.04.1) ...
+Selecting previously unselected package python-minimal.
+Preparing to unpack .../python-minimal_2.7.11-1_amd64.deb ...
+Unpacking python-minimal (2.7.11-1) ...
+Selecting previously unselected package libpython2.7-stdlib:amd64.
+Preparing to unpack .../libpython2.7-stdlib_2.7.12-1ubuntu0~16.04.1_amd64.deb ...
+Unpacking libpython2.7-stdlib:amd64 (2.7.12-1ubuntu0~16.04.1) ...
+Selecting previously unselected package python2.7.
+Preparing to unpack .../python2.7_2.7.12-1ubuntu0~16.04.1_amd64.deb ...
+Unpacking python2.7 (2.7.12-1ubuntu0~16.04.1) ...
+Selecting previously unselected package libpython-stdlib:amd64.
+Preparing to unpack .../libpython-stdlib_2.7.11-1_amd64.deb ...
+Unpacking libpython-stdlib:amd64 (2.7.11-1) ...
+Processing triggers for systemd (229-4ubuntu16) ...
+Processing triggers for mime-support (3.59ubuntu1) ...
+Setting up libpython2.7-minimal:amd64 (2.7.12-1ubuntu0~16.04.1) ...
+Setting up python2.7-minimal (2.7.12-1ubuntu0~16.04.1) ...
+Setting up python-minimal (2.7.11-1) ...
+Selecting previously unselected package python.
+(Reading database ... 15524 files and directories currently installed.)
+Preparing to unpack .../python_2.7.11-1_amd64.deb ...
+Unpacking python (2.7.11-1) ...
+Selecting previously unselected package logrotate.
+Preparing to unpack .../logrotate_3.8.7-2ubuntu2_amd64.deb ...
+Unpacking logrotate (3.8.7-2ubuntu2) ...
+Selecting previously unselected package nginx.
+Preparing to unpack .../nginx_1.10.2-1~xenial_amd64.deb ...
+----------------------------------------------------------------------
+
+Thanks for using nginx!
+
+Please find the official documentation for nginx here:
+* http://nginx.org/en/docs/
+
+Commercial subscriptions for nginx are available on:
+* http://nginx.com/products/
+
+----------------------------------------------------------------------
+Unpacking nginx (1.10.2-1~xenial) ...
+Selecting previously unselected package python-pkg-resources.
+Preparing to unpack .../python-pkg-resources_20.7.0-1_all.deb ...
+Unpacking python-pkg-resources (20.7.0-1) ...
+Selecting previously unselected package python-meld3.
+Preparing to unpack .../python-meld3_1.0.2-2_all.deb ...
+Unpacking python-meld3 (1.0.2-2) ...
+Selecting previously unselected package supervisor.
+Preparing to unpack .../supervisor_3.2.0-2_all.deb ...
+Unpacking supervisor (3.2.0-2) ...
+Processing triggers for systemd (229-4ubuntu16) ...
+Setting up cron (3.0pl1-128ubuntu2) ...
+Adding group `crontab' (GID 107) ...
+Done.
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+update-rc.d: warning: stop runlevel arguments (1) do not match cron Default-Stop values (none)
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up libpopt0:amd64 (1.16-10) ...
+Setting up libpython2.7-stdlib:amd64 (2.7.12-1ubuntu0~16.04.1) ...
+Setting up python2.7 (2.7.12-1ubuntu0~16.04.1) ...
+Setting up libpython-stdlib:amd64 (2.7.11-1) ...
+Setting up python (2.7.11-1) ...
+Setting up logrotate (3.8.7-2ubuntu2) ...
+Setting up nginx (1.10.2-1~xenial) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up python-pkg-resources (20.7.0-1) ...
+Setting up python-meld3 (1.0.2-2) ...
+Setting up supervisor (3.2.0-2) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Processing triggers for systemd (229-4ubuntu16) ...
+Processing triggers for libc-bin (2.23-0ubuntu5) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+ ---> 7d6e83e64a16
+Removing intermediate container c357ed2ba7f5
+Step 7/11 : COPY supervisor.conf /etc/supervisor/conf.d/nginx.conf
+ ---> a4e076ab1e03
+Removing intermediate container 50fa3e0f865b
+Step 8/11 : COPY default.conf /etc/nginx/conf.d/default.conf
+ ---> 982ba7cc10bb
+Removing intermediate container 145c2a546e1d
+Step 9/11 : EXPOSE 80 443
+ ---> Running in 5e28e4a51a01
+ ---> 3f9b49e37e3c
+Removing intermediate container 5e28e4a51a01
+Step 10/11 : STOPSIGNAL SIGQUIT
+ ---> Running in 81bec00d61f1
+ ---> b532c45488ad
+Removing intermediate container 81bec00d61f1
+Step 11/11 : ENTRYPOINT /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+ ---> Running in f074c39ada42
+ ---> 17bbc090c411
+Removing intermediate container f074c39ada42
+Successfully built 17bbc090c411
+
+===========
+
+docker@boot2docker:/mnt/sda1/tmp/docker-server-source0100-nginx$ sudo docker run --name nginx-001 -i -t --rm -p 80:80 ronrong/nginx-1.10:0.01
+2017-03-18 13:57:13,189 CRIT Supervisor running as root (no user in config file)
+2017-03-18 13:57:13,189 WARN Included extra file "/etc/supervisor/conf.d/nginx.conf" during parsing
+2017-03-18 13:57:13,203 INFO RPC interface 'supervisor' initialized
+2017-03-18 13:57:13,204 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2017-03-18 13:57:13,204 INFO supervisord started with pid 1
+2017-03-18 13:57:14,208 INFO spawned: 'cron' with pid 7
+2017-03-18 13:57:14,213 INFO spawned: 'nginx' with pid 8
+2017-03-18 13:57:15,227 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2017-03-18 13:57:15,228 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

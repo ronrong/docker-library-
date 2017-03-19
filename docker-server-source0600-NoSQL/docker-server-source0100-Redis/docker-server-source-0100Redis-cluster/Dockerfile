@@ -1,3 +1,4 @@
+# see https://github.com/Grokzen/docker-redis-cluster
 FROM ronrong/ubuntu:0.02
 
 MAINTAINER ronrong <shaolinrong@hotmail.com>
