@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 # 更新软件源，速度快了100倍
-# COPY ./etc/apt/sources.list  /etc/apt/sources.list
+COPY ./etc/apt/sources.list  /etc/apt/sources.list
 
 RUN echo 'APT::Install-Recommends "0"; \n\
           APT::Get::Assume-Yes "true"; \n\
@@ -32,4 +32,4 @@ RUN echo 'APT::Install-Recommends "0"; \n\
   && apt-get clean install \
 && rm -rf /var/lib/apt/lists/*
 
-# docker build -t ronrong/ubuntu:0.02
+# docker build -t ronrong/ubuntu:0.03
