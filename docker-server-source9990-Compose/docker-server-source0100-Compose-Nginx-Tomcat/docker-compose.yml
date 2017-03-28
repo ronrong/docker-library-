@@ -1,0 +1,32 @@
+# see https://github.com/zhangjian24/mythrift-docker/tree/d33e3d210f5b82b5abbfbd4e0d6fd603267c63a3
+# 
+
+#docker-registry:
+# container_name: docker-registry
+# image: 'registry'
+# ports:
+#  - "4800:4800"
+server-tomcat001:
+ container_name: server-tomcat001
+ image: 'ronrong/tomcat8-jdk8:0.02'
+ ports:
+  - "4801:8080"
+ volumes:
+  - ./docker-data/tomcat/webapps:/data/webserver/tomcat/webapps
+server-tomcat002:
+ container_name: server-tomcat002
+ image: 'ronrong/tomcat8-jdk8:0.02'
+ ports:
+  - "4802:8080"
+ volumes:
+  - ./docker-data/tomcat/webapps:/data/webserver/tomcat/webapps
+server-nginx001:
+ container_name: server-nginx001
+ image: 'ronrong/nginx1.10:0.03'
+ ports:
+  - "4880:80"
+ links:
+  - server-tomcat001
+  - server-tomcat002
+ volumes:
+  - ./docker-data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf

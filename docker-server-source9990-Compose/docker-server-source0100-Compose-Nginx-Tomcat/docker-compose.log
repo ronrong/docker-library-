@@ -1,0 +1,80 @@
+$> docker-server-source0100-Compose-Nginx-Tomcat-MySQL$ docker-compose up
+Creating server-tomcat001
+Creating server-tomcat002
+Creating server-nginx001
+Attaching to server-tomcat001, server-tomcat002, server-nginx001
+server-nginx001     | 2017-03-26 10:47:25,816 CRIT Supervisor running as root (no user in config file)
+server-nginx001     | 2017-03-26 10:47:25,836 WARN Included extra file "/etc/supervisor/conf.d/nginx.conf" during parsing
+server-nginx001     | 2017-03-26 10:47:25,976 INFO RPC interface 'supervisor' initialized
+server-nginx001     | 2017-03-26 10:47:25,984 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+server-nginx001     | 2017-03-26 10:47:25,988 INFO supervisord started with pid 1
+server-nginx001     | 2017-03-26 10:47:26,995 INFO spawned: 'cron' with pid 7
+server-nginx001     | 2017-03-26 10:47:27,077 INFO spawned: 'nginx' with pid 8
+server-nginx001     | 2017-03-26 10:47:28,085 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+server-nginx001     | 2017-03-26 10:47:28,090 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+server-tomcat001    | 26-Mar-2017 10:47:34.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.39
+server-tomcat001    | 26-Mar-2017 10:47:34.556 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Nov 9 2016 08:48:39 UTC
+server-tomcat001    | 26-Mar-2017 10:47:34.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.39.0
+server-tomcat001    | 26-Mar-2017 10:47:34.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+server-tomcat001    | 26-Mar-2017 10:47:34.570 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.4.47-boot2docker
+server-tomcat001    | 26-Mar-2017 10:47:34.574 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+server-tomcat001    | 26-Mar-2017 10:47:34.585 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/jdk1.8.0_121/jre
+server-tomcat001    | 26-Mar-2017 10:47:34.586 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_121-b13
+server-tomcat001    | 26-Mar-2017 10:47:34.588 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+server-tomcat001    | 26-Mar-2017 10:47:34.590 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /data/webserver/tomcat
+server-tomcat001    | 26-Mar-2017 10:47:34.593 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /data/webserver/tomcat
+server-tomcat002    | 26-Mar-2017 10:47:34.614 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.39
+server-tomcat002    | 26-Mar-2017 10:47:34.677 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Nov 9 2016 08:48:39 UTC
+server-tomcat002    | 26-Mar-2017 10:47:34.679 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.39.0
+server-tomcat001    | 26-Mar-2017 10:47:34.617 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/data/webserver/tomcat/conf/logging.properties
+server-tomcat001    | 26-Mar-2017 10:47:34.687 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+server-tomcat001    | 26-Mar-2017 10:47:34.690 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+server-tomcat001    | 26-Mar-2017 10:47:34.701 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+server-tomcat002    | 26-Mar-2017 10:47:34.705 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+server-tomcat002    | 26-Mar-2017 10:47:34.710 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.4.47-boot2docker
+server-tomcat002    | 26-Mar-2017 10:47:34.719 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+server-tomcat001    | 26-Mar-2017 10:47:34.703 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/data/webserver/tomcat/endorsed
+server-tomcat002    | 26-Mar-2017 10:47:34.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/jdk1.8.0_121/jre
+server-tomcat002    | 26-Mar-2017 10:47:34.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_121-b13
+server-tomcat001    | 26-Mar-2017 10:47:34.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/data/webserver/tomcat
+server-tomcat001    | 26-Mar-2017 10:47:34.749 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/data/webserver/tomcat
+server-tomcat002    | 26-Mar-2017 10:47:34.757 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+server-tomcat002    | 26-Mar-2017 10:47:34.760 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /data/webserver/tomcat
+server-tomcat001    | 26-Mar-2017 10:47:34.765 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/data/webserver/tomcat/temp
+server-tomcat002    | 26-Mar-2017 10:47:34.765 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /data/webserver/tomcat
+server-tomcat001    | 26-Mar-2017 10:47:34.769 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+server-tomcat002    | 26-Mar-2017 10:47:34.778 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/data/webserver/tomcat/conf/logging.properties
+server-tomcat002    | 26-Mar-2017 10:47:34.791 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+server-tomcat002    | 26-Mar-2017 10:47:34.798 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+server-tomcat002    | 26-Mar-2017 10:47:34.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+server-tomcat002    | 26-Mar-2017 10:47:34.816 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/data/webserver/tomcat/endorsed
+server-tomcat002    | 26-Mar-2017 10:47:34.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/data/webserver/tomcat
+server-tomcat002    | 26-Mar-2017 10:47:34.825 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/data/webserver/tomcat
+server-tomcat002    | 26-Mar-2017 10:47:34.844 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/data/webserver/tomcat/temp
+server-tomcat002    | 26-Mar-2017 10:47:34.846 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+server-tomcat001    | 26-Mar-2017 10:47:37.740 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+server-tomcat001    | 26-Mar-2017 10:47:38.037 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+server-tomcat001    | 26-Mar-2017 10:47:38.090 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+server-tomcat002    | 26-Mar-2017 10:47:38.143 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+server-tomcat001    | 26-Mar-2017 10:47:38.236 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+server-tomcat001    | 26-Mar-2017 10:47:38.240 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 11988 ms
+server-tomcat002    | 26-Mar-2017 10:47:38.414 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+server-tomcat002    | 26-Mar-2017 10:47:38.452 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+server-tomcat002    | 26-Mar-2017 10:47:38.581 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+server-tomcat002    | 26-Mar-2017 10:47:38.604 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 12335 ms
+server-tomcat001    | 26-Mar-2017 10:47:38.692 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+server-tomcat001    | 26-Mar-2017 10:47:38.716 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.39
+server-tomcat001    | 26-Mar-2017 10:47:38.923 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /data/webserver/tomcat/webapps/webapp
+server-tomcat002    | 26-Mar-2017 10:47:39.154 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+server-tomcat002    | 26-Mar-2017 10:47:39.157 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.39
+server-tomcat002    | 26-Mar-2017 10:47:39.333 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /data/webserver/tomcat/webapps/webapp
+server-tomcat001    | 26-Mar-2017 10:47:45.478 INFO [localhost-startStop-1] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [342] milliseconds.
+server-tomcat002    | 26-Mar-2017 10:47:45.482 INFO [localhost-startStop-1] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [153] milliseconds.
+server-tomcat001    | 26-Mar-2017 10:47:45.707 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /data/webserver/tomcat/webapps/webapp has finished in 6,784 ms
+server-tomcat001    | 26-Mar-2017 10:47:45.753 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+server-tomcat001    | 26-Mar-2017 10:47:45.842 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+server-tomcat001    | 26-Mar-2017 10:47:45.853 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 7610 ms
+server-tomcat002    | 26-Mar-2017 10:47:45.852 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /data/webserver/tomcat/webapps/webapp has finished in 6,518 ms
+server-tomcat002    | 26-Mar-2017 10:47:45.902 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+server-tomcat002    | 26-Mar-2017 10:47:45.996 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+server-tomcat002    | 26-Mar-2017 10:47:46.009 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 7398 ms
