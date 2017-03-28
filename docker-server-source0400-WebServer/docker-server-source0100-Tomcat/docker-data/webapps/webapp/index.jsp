@@ -4,7 +4,7 @@
 <html>
 <html>
 <head>
-<title>访问量统计</title>
+<title>访问量统计-rongshaolin</title>
 </head>
 <body>
 <%
@@ -18,7 +18,7 @@
     application.setAttribute("hitCounter", hitsCount);
 %>
 
-<p>session ID：: <%= session.getId()%></p>
+<p>session ID        : <%= session.getId()%></p>
 <hr/>
 <p>取得服务器IP      ：<span style="background-color: red;"><%= request.getLocalAddr()%>:<%= request.getLocalPort()%></span></p>  
 <hr/>

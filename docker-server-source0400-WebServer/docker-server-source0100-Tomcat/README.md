@@ -19,7 +19,7 @@ $> sudo docker run --name tomcat8-001 -i -t --rm -p 8080:8080 ronrong/tomcat8-jd
 或者挂载一个卷
 
 ```
-$> sudo docker run -it -v /data/webserver/tomcat/webapps/:/data/webserver/tomcat/webapps/  -p 8080:8080 ronrong/tomcat8-jdk8:0.02
+$> sudo docker run -it -v ./docker-data/webapps:/data/webserver/tomcat/webapps/  -p 8080:8080 ronrong/tomcat8-jdk8:0.02
 ```
 
 ### 0300. 浏览器
@@ -54,5 +54,3 @@ $> sudo docker stop <container Id>
 $> sudo docker exec -it tomcat8-002 /bin/bash
 ```
 
-### 0700. 上传war包
-参考 ./webapp/README.md

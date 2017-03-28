@@ -19,10 +19,12 @@ RUN curl -L -O http://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMC
     && rm apache-tomcat-$TOMCAT_VERSION.tar
 
 #  用户名admin， 密码 admin
-ADD tomcat-users.xml $CATALINA_HOME/conf/
-# ADD tomcatd.conf /etc/supervisor/conf.d/
+ADD ./docker-data/tomcat-users.xml $CATALINA_HOME/conf/
+# ADD ./docker-data/tomcatd.conf /etc/supervisor/conf.d/
 
 VOLUME "$CATALINA_HOME/webapps"
+VOLUME "$CATALINA_HOME/conf"
+
 WORKDIR $CATALINA_HOME
 
 EXPOSE 8080
