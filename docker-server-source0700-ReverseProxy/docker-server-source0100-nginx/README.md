@@ -12,6 +12,6 @@ $> sudo docker build -t ronrong/nginx-1.10:0.01 .
 ### 0200. 运行容器
 
 ```
-$> sudo docker run --name nginx-001 -i -t -p 80:80 ronrong/nginx-1.10:0.01
+$> docker --name nginx001 run -it -v `pwd`/docker-data/nginx.conf:/etc/nginx/nginx.conf  -p 80:80 ronrong/nginx-1.10:0.01
 ```
 

@@ -8,7 +8,7 @@ ENV NGINX_VERSION=1.10.2
 ENV NGINX_HOME /data/nginx
 
 # 更新软件源
-COPY ./etc/apt/sources.list  /etc/apt/sources.list
+COPY ./docker-data/etc/apt/sources.list  /etc/apt/sources.list
 
 # Prepare image
 # 为nginx添加更新源（1）获取nginx_signing的公钥
@@ -42,9 +42,20 @@ RUN apt-key adv --fetch-keys http://nginx.org/keys/nginx_signing.key \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/ \
     && rm -fr /tmp/* /var/tmp/*
 
-COPY supervisor.conf /etc/supervisor/conf.d/nginx.conf
+COPY ./docker-data/supervisor.conf /etc/supervisor/conf.d/nginx.conf
 # /etc/nginx/nginx.conf
-COPY default.conf /etc/nginx/conf.d/default.conf
+#RUN cp -r /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
+# COPY default.conf /etc/nginx/conf.d/default.conf
+####################fixme#########cannot mount volume over existing file, file exists /mnt/sda1/var/lib/docker/aufs/mnt/35d21baa977d8412ea1d6b498b8ef70fc7054f2da2420072404b24eb3f05d6b6/etc/nginx/nginx.conf
+RUN cp -r /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak && rm -f /etc/nginx/nginx.conf
+# 预设置的配置文件
+#COPY ./docker-data/nginx.conf /etc/nginx/nginx.conf
+
+#RUN ln -s $NGINX_HOME/conf/nginx.conf /etc/nginx/nginx.conf
+
+VOLUME /etc/nginx/nginx.conf
+
+#RUN nginx -t -c /etc/nginx/nginx.conf
 
 EXPOSE 80 443
 
